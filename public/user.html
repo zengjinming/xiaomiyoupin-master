@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 重置样式表 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- 引入图标样式表 -->
+    <link rel="stylesheet" href="./fa/css/all.css">
+    <link rel="stylesheet" href="./css/user.css">
+    <link rel="stylesheet" href="./css/base1.css">
+    <title>悦享</title>
+
+    <!-- 引入js文件 -->
+    <script src="./js/tool.js"></script>
+
+    <script>
+        window.onload = function () {
+            // 先获取用户名元素
+            var themename = document.getElementById('themename');
+            var themename1 = document.getElementById('themename1');
+            // 读取用户名
+            var theme = localStorage.getItem('username1');
+            // 再把用户名添加到那里
+            themename.innerHTML = theme;
+            themename1.innerHTML = theme;
+
+            var li = document.getElementById('fixnav').getElementsByTagName('li');
+            // 获取
+            // 当鼠标移入方块内时
+            for (let i = 0; i < li.length; i++) {
+                li[i].onmouseover = function () {
+                    // 如果该鼠标移入,则添加相应的类
+                    var a = this.children[0];
+                    var p = this.children[1];
+                    var divm = this.children[2];
+                    // 当鼠标移入时，直接切换类
+                    removeClass(a, 'm-icons' + i);
+                    addClass(a, "m-iconsa" + i);
+                    // 给字体添加相应的颜色
+                    p.style.color = "#845f3f";
+                    divm.style.display = 'block';
+
+                }
+                li[i].onmouseout = function () {
+                    // 如果该鼠标移入,则添加相应的类
+                    var a = this.children[0];
+                    var p = this.children[1];
+                    var divm = this.children[2];
+                    // 当鼠标移入时，直接切换类
+                    removeClass(a, 'm-iconsa' + i);
+                    addClass(a, "m-icons" + i);
+                    p.style.color = "#333";
+                    divm.style.display = "none";
+                }
+            }
+            // 点击待收货，待啥的，会出现下划线
+            // 先获取
+            var oders=document.getElementById("oders").getElementsByTagName("li");
+            // 遍历
+            for(let i=0;i<oders.length;i++){
+                // 当移入时，颜色会发生变化
+                oders[i].onmouseover=function(){
+                    this.style.color="#845f3f";
+                }
+                
+                oders[i].onmouseout=function(){
+                    this.style.color="#4a4a4a";
+                }
+                // 点击事件
+                oders[i].onclick=function(){
+                    for(var j=0;j<oders.length;j++){
+                        oders[j].classList.remove('active');
+                        oders[j].style.color="#4a4a4a";
+                         this.classList.add('active');
+                         this.style.color="#845f3f";
+                    }
+                }
+
+            }
+
+            var dingli = document.getElementById('userding').getElementsByTagName('li');
+            var zhongright=document.getElementById('zhongright');
+            for (let i = 0; i < dingli.length; i++) {
+                dingli[i].onclick = function () {
+                    for(var j=0;j<dingli.length;j++){
+                        dingli[j].classList.remove('active');
+                        dingli[j].style.color="#4a4a4a";
+
+                        var box=zhongright.children[j];
+                        box.style.display="none";
+
+                        let span=this.children[0];
+                        span.classList.add("activey");
+                        
+                        this.classList.add('active');
+                        this.style.color="#845f3f";
+                        
+                        
+                    }
+                    let box1=zhongright.children[i];
+                    box1.style.display="block";
+
+                }
+        }
+    }
+    </script>
+
+</head>
+
+<body>
+    <div class="home">
+        <!-- 头部导航栏如下 -->
+        <div class="m-top clearfix">
+            <!-- 导航栏里面的主要部分 -->
+            <div class="m-li-top">
+                <ul class="top-right">
+                    <li class="f1 m-login">
+                        <a href="./user.html" class="loginyya" id="loginyya">
+                            <span class="f1img"></span>
+                            <span id="themename"></span>
+                            <span class="fa fa-chevron-down"></span>
+                            
+                        </a>
+                        <div class="site-item-nav">
+                            <ul class="site-nav user-nav">
+                                <li>
+                                    <a rel="nofollow" href="#" class="m-safe-anchor">我的订单</a>
+                                </li>
+                                <li>
+                                    <a rel="nofollow" href="#" class="m-safe-anchor">退款/售后</a>
+                                </li>
+                                <li>
+                                    <a rel="nofollow"  href="#" class="m-safe-anchor">我的资产</a>
+                                </li>
+                                <li>
+                                    <a rel="nofollow"  href="#" class="m-safe-anchor">我的收藏</a>
+                                </li>
+                                <li>
+                                    <a rel="nofollow"  href="#" class="m-safe-anchor">地址管理</a>
+                                </li>
+                                <li>
+                                    <a rel="nofollow" href="javascript:;">退出登录</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <span class="f1 m-line"></span>
+                    <li class="f1 m-help">
+                        <a href="#">帮助中心</a>
+                    </li>
+                    <span class="f1 m-line"></span>
+                    <li class="f1 downlode">
+                        <i class="fa fa-tablet-alt fa-lg"></i>
+                        <a href="#">下载App</a>
+                    </li>
+                    <span class="f1 m-line"></span>
+                    <li class="f1 guize">
+                        <div class="m-curou">
+                            <a href="#">
+                                资质证照&nbsp;/&nbsp;协议规则
+                            </a>
+                            <i class="fa fa-angle-down fa-lg"></i>
+                        </div>
+                        <div class="site-item-nav hidden">
+                            <ul class="list">
+                                <li>
+                                    <a href="#">资质证照</a>
+                                </li>
+                                <li>
+                                    <a href="#">协议规则</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mheader clearfix" id="mheader">
+            <div class="mcontainer" id="mcontainer">
+                <div class="yue">悦享购物</div>
+                <div class="feilei">
+
+                </div>
+                <ul class="tap-list">
+                    <li>
+                        <a href="#">限时抢购</a>
+                    </li>
+                    <li>
+                        <a href="#">企业采购</a>
+                    </li>
+                </ul>
+                <div class="m-shop">
+                    <div class="m-shop-main">
+                        <a href="#"></a>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="m-search">
+                    <div class="search-from">
+                        <a href="#"></a>
+                        <div class="search-input">
+                            <input type="text" placeholder="搜索">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 中间部分 -->
+        <div class="zhongbox">
+            <div class="container">
+                <div class="zhongtop">
+                    <span><a href="./index1.html">首页</a></span>
+                    <span><a href="#">个人中心</a></span>
+                    <span><a href="#">我的订单</a></span>
+                </div>
+
+                <div class="zhongleft">
+                    <div>
+                        <section>
+                            <div class="mperson">
+                                <img src="./image/per.png" alt="">
+                                <p class="themename" id="themename1"></p>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="mlist">
+                                <ul id="userding">
+                                    <li class="active">
+                                        <span class="activey"></span>
+                                        <a href="#">我的订单</a>
+                                    </li>
+                                    <li>
+                                        <span></span>
+                                        <a href="#">我的资产</a>
+                                    </li>
+                                    <li>
+                                        <span></span>
+                                        <a href="#">我的收藏</a>
+                                    </li>
+                                    <li>
+                                        <span></span>
+                                        <a href="#">地址管理</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="zhongright" id="zhongright">
+                    <div class="mpersonbox0" id="mpersonbox0">
+                        <div>
+                            <section>
+                                <div class="mperson-sele">
+                                    <ul id="oders">
+                                        <li class="active" style="color:#845f3f">待收货(0)</li>
+                                        <li class="">待付款(0)</li>
+                                        <li class="">已收货</li>
+                                        <li class="">退款订单</li>
+                                        <li class="">全部订单</li>
+                                        <li class="delete">
+                                            <a href="#">回收站</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </section>
+
+                            <section>
+                                <div class="mperson-main">
+                                    <div class="mperson-no-oder">
+                                        <div class="nimg"></div>
+                                        <p class="oderinfo">没有相应订单数据</p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="mpersonbox1" id="mpersonbox1">
+                        <div class="m-wrap">
+                            <h2 class="juan">优惠券</h2>
+                            <div class="juaninput">
+                                <input type="text" placeholder="请输入优惠码">
+                                <a href="#" class="m-btn">确认兑换</a>
+                            </div>
+                            <div class="kebuke">
+                                <ul class="kebu">
+                                    <li>
+                                        <a href="#" style="border-bottom: 2px solid #845f3f;color: #845f3f;">可使用</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">不可使用</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="juantu">
+                                <div class="jtu">
+                                     <div class="jimg"></div>
+                                     <p class="juaninfo">你还没有任何优惠券</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mpersonbox2 " id="mpersonbox2">
+                        <div class="m-wrap2">
+                            <h2 class="shoucang">我的收藏</h2>
+                            <div class="shoutu">
+                                <div class="stu">
+                                     <div class="simg"></div>
+                                     <p class="sinfo">你还没有收藏任何的优惠券</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mpersonbox3" id="mpersonbox3">
+                        <div class="m-wrap3">
+                            <h2 class="address">地址管理</h2>
+                            <div class="addtu">
+                                <div class="atu">
+                                     <a href="#" class="addjia"></a>
+                                     <div class="addAds">添加新地址</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右边的部分固定 -->
+        <div class="fixedbox">
+            <ul class="fixnav" id="fixnav">
+                <li>
+                    <a class="m-icons0" data-src="" href="javascript:;"></a>
+                    <p class="text">联系客服</p>
+                    <div class="fixed-pop0">
+                        <div class="p-inner">
+                            <p class="info-title">小米有品平台问题，建议反馈，商户和物流问题投诉等请拨打 小米有品客服热线</p>
+                            <p class="info-phone">400-100-1199</p>
+                            <p class="info-day">(周一至周日 8：00-18：00)</p>
+                            <p class="info-des">小米/米家自营品牌，手机电视智能硬件商品或订单发货/退款售后问题 请拨打小米自营客服热线</p>
+                            <p class="info-phone">400-100-5678</p>
+                            <p class="info-day">(周一至周日 8：00-18：00)</p>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="m-icons1" data-src="" href="javascript:;"></a>
+                    <p class="text">下载APP</p>
+                    <div class="fixed-pop1">
+                        <div class="p-inner1">
+                            <img src="./image/youp.png" alt="">
+                            <p class="info-title1">下载小米有品app <br> 得新人礼包</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="m-icons2" data-src="" href="javascript:;"></a>
+                    <p class="text">新人有礼</p>
+                    <div class="fixed-pop2">
+                        <div class="p-inner2">
+                              <div class="img-xinr"></div>
+                              <img src="./image/youp.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="m-icons3" data-src="" href="javascript:;"></a>
+                    <p class="text">关注微信</p>
+                    <div class="fixed-pop3">
+                        <div class="p-inner3">
+                            <img src="./image/youp.png" alt="">
+                            <p class="info-title3">扫码关注「小米有品」微信服务号，签到积分赢大奖</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="m-icons4" data-src="" href="javascript:;"></a>
+                    <p class="text">回到顶部</p>
+                    <div class="fixed-pop4">
+                        <!-- <div class="p-inner">
+                            <p class="info-title">小米有品平台问题，建议反馈，商户和物流问题投诉等请拨打 小米有品客服热线</p>
+                            <p class="info-phone">400-100-1199</p>
+                            <p class="info-day">(周一至周日 8：00-18：00)</p>
+                            <p class="info-des">小米/米家自营品牌，手机电视智能硬件商品或订单发货/退款售后问题 请拨打小米自营客服热线</p>
+                            <p class="info-phone">400-100-5678</p>
+                            <p class="info-day">(周一至周日 8：00-18：00)</p>
+                            
+                        </div> -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>

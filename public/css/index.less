@@ -1,0 +1,488 @@
+
+
+.zhong-container{
+    width: 1080px;
+    margin:0 auto;
+    height: 358px;
+    .left{
+        // 设置绝对定位 会脱离文档流
+        position: absolute;
+        width: 221px;
+        height: 358px;
+        background-color: #9f8052;
+        margin-top: 13px;
+        li{
+            height: 33px;
+            line-height: 33px;
+            padding:0 30px;
+            a{
+                color:#fff;
+                font-size: 14px;
+            }
+        }
+        li:first-of-type {
+            margin-top: 13px;
+        }
+    }
+    .outer{
+        float: right;
+        width: 859px;
+        margin-top: 13px;
+        .imglist{
+            li{
+                position: absolute;
+                img{
+                    width: 859px;
+                    display: none;
+                }
+            }
+        }
+        
+        
+    }
+   
+}
+
+.left li:hover{
+    background-color: #353535;
+}
+.pointer{
+    position: absolute;
+    top: 450px;
+    left: 750px;
+    
+}
+
+.zhong-container .pointer a{
+    float: left;
+    width: 6px;
+    height: 6px;
+    border: 2px solid rgba(255,255, 255,.4);
+    background-color:#fff;
+    border-radius: 50%;
+    margin: 0 3px;
+}
+
+.pointer a:hover,.pointer a.active{
+    border: 2px solid rgba(255,255, 255,.4);
+    background-color:#f40;
+}
+
+
+.zhong-container .prevnext a{
+        width: 41px;
+        height: 69px;
+        background-image: url(../image/icon-slides.png);
+        position: absolute;
+        top: 160px;
+        bottom: 0;
+        margin-top: 98px;
+}
+
+.prevnext .prev{
+    left: 375px;
+    background-position: -84px 0;
+}
+
+.prevnext .prev:hover{
+    background-position: 0 0;
+}
+
+.prevnext .next{
+    right: 153px;
+    background-position: -125px 0;
+}
+
+.prevnext .next:hover{
+    background-position: -42px 0;
+}
+
+.p-wrap-container{
+    width:1080px;
+    margin: 0 auto;
+    .p-nav{
+        height: 158px;
+        padding-top:30px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(231, 231, 231);
+        li{
+            float: left;
+            width: 130px;
+            margin-right: 107px;
+            img{
+                width: 80px;
+                padding: 25px 25px 15px;
+            }
+            a{
+                display:block;
+                font-size: 14px;
+                margin-top: 4px;
+                width: 130px;
+                text-align: center;
+                color: #999;
+            }
+        }
+        .m-tag-no{
+            margin-right: 0px;
+        }
+    }
+}
+.xiatu{
+    margin-top: 30px;
+    .container{
+        width: 1080px;
+        margin: 0 auto;
+        .h-top{
+            position: relative;
+            height: 37px;
+            margin-bottom: 20px;
+            .h-font{
+                display: block;
+                color: #333;
+                font-size: 28px;
+                font-weight: 400;
+                span{
+                    margin-left: 12px;
+                    font-size: 14px;
+                    color: #999;
+                }
+            }
+            .h-more{
+                position: absolute;
+                right: 0;
+                top: 6px;
+                height: 30px;
+                a{
+                    color: #999;
+                    margin-right: 10px;
+                }
+                i{
+                    color: #999;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    
+}
+
+.h-good-items{
+    width: 530px;
+    height: 210px;
+    background-color:rgb(249,243,233);
+    float: left;
+    position: relative;
+    img{
+        position: absolute;
+        right: 25px;
+        width: 140px;
+        height: 140px;
+        bottom: 20px;
+    }
+    .p-text{
+        padding-top: 25px;
+        padding-left: 23px;
+        .p-info{
+            height: 24px;
+            color: #333;
+            font-size: 20px;
+        }
+        .p-desr{
+            color: #999;
+            font-size: 16px;
+            line-height: 20px;
+            height: 20px;
+            margin-top: 8px;
+        }
+        .p-price{
+            color: #a92112;
+            margin-top: 28px;
+            font-size: 24px;
+            height: 28px;
+            line-height: 28px;
+        }
+    }
+}
+
+.h-good-items1{
+    position: relative;
+    width: 266px;
+    height: 210px;
+    background-color: rgb(248,248,248);
+    float: left;
+    margin-left: 5px;
+    .p-text1{
+        padding-top: 25px;
+        padding-left: 23px;
+        .p-info1{
+            height: 24px;
+            color: #333;
+            font-size: 20px;
+        }
+        .p-price1{
+            color: #a92112;
+            margin-top: 28px;
+            font-size: 24px;
+            height: 28px;
+            line-height: 28px;
+        }
+    }
+    img{
+        position: absolute;
+        right: 15px;
+        width: 130px;
+        height: 130px;
+        bottom: 10px;
+    }
+}
+
+.h-good-items2{
+    position: relative;
+    width: 266px;
+    height: 210px;
+    background-color: rgb(248,248,248);
+    float: left;
+    margin-left: 5px;
+    .p-text2{
+        padding-top: 25px;
+        padding-left: 23px;
+        .p-info2{
+            height: 24px;
+            color: #333;
+            font-size: 20px;
+        }
+        .p-price2{
+            color: #a92112;
+            margin-top: 28px;
+            font-size: 24px;
+            height: 28px;
+            line-height: 28px;
+        }
+    }
+    img{
+        position: absolute;
+        right: 15px;
+        width: 130px;
+        height: 130px;
+        bottom: 10px;
+    }
+}
+
+.fixedbox{
+    // 固定定位
+    position: fixed;
+    // 距离顶部
+    top: 220px;
+    // 距离右边
+    right: 10px;
+    // 设置优先级,不会被脱离了文档流覆盖
+    z-index: 999;
+    width: 71px;
+    padding: 0 5px;
+    background-color: #fff;
+    box-shadow: 0 0 18px rgba(0,0,0,.1);
+    ul{
+        li{
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+            border-bottom: 1px solid #e7e7e7;
+            .m-icons0{
+                width: 30px;
+                height: 30px;
+                display: block;
+                margin: 3px auto;
+                background-image: url(../image/ya.png);
+                background-position: 0 -1644px;
+            }
+            .m-icons1{
+                width: 30px;
+                height: 30px;
+                display: block;
+                margin: 3px auto;
+                background-image: url(../image/ya.png);
+                background-position: 0 -1270px;
+            }
+            .m-icons2{
+                width: 30px;
+                height: 30px;
+                display: block;
+                margin: 3px auto;
+                background-image: url(../image/ya.png);
+                background-position: 0 -794px;
+            }
+            .m-icons3{
+                width: 30px;
+                height: 30px;
+                display: block;
+                margin: 3px auto;
+                background-image: url(../image/ya.png);
+                background-position: 0 -998px;
+            }
+            .m-icons4{
+                width: 30px;
+                height: 30px;
+                display: block;
+                margin: 3px auto;
+                background-image: url(../image/ya.png);
+                background-position: 0 -1304px;
+            }
+            .m-iconsa0{
+                width: 30px;
+                height: 30px;
+                display: block;
+                margin: 3px auto;
+                background-image: url(../image/ya.png);
+                background-position: 0 -1610px;
+            }
+            .m-iconsa1{
+                width: 30px;
+                height: 30px;
+                display: block;
+                margin: 3px auto;
+                background-image: url(../image/ya.png);
+                background-position: 0 -1236px;
+            }
+            .m-iconsa2{
+                width: 30px;
+                height: 30px;
+                display: block;
+                margin: 3px auto;
+                background-image: url(../image/ya.png);
+                background-position: 0 -760px;
+            }
+            .m-iconsa3{
+                width: 30px;
+                height: 30px;
+                display: block;
+                margin: 3px auto;
+                background-image: url(../image/ya.png);
+                background-position: 0 -1780px;
+            }
+            .m-iconsa4{
+                width: 30px;
+                height: 30px;
+                display: block;
+                margin: 3px auto;
+                background-image: url(../image/ya.png);
+                background-position: 0 -1338px;
+            }
+            .fixed-pop0{
+                // 开启绝对定位
+                position: absolute;
+                width: 230px;
+                left: -244px;
+                top:0;
+                padding-right: 20px;
+                // 一开始是先隐藏的，只有鼠标移入时才显示
+                display: none;
+                .p-inner{
+                    // 内边框
+                    padding: 8px 10px;
+                    border: 1px solid #dfdfdf;
+                    background: #fff;
+                    font-family: Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+                    .info-title{
+                        // 距离顶部距离
+                        margin-top: 10px;
+                        color: #333;
+                        font-size: 13px;
+                        margin-block-start: 1em;
+                        margin-block-end: 1em;
+                    }
+                    .info-day{
+                        margin-top: 3px;
+                        color: #666;
+                        font-size: 12px;
+                    }
+                    .info-phone{
+                        margin-top: 17px;
+                        color: #845f3f;
+                        font-size: 20px;
+                    }
+                    .info-des{
+                        margin-top: 18px;
+                        color: #333;
+                        font-size: 13px;
+                    }
+                }
+            }
+
+            .fixed-pop1{
+                width: 130px;
+                position: absolute;
+                left: -144px;
+                top: 70px;
+                display: none;
+                padding-right: 20px;
+                overflow: hidden;
+                .p-inner1{
+                    padding: 10px;
+                    border: 1px solid #dfdfdf;
+                    background: #fff;
+                    img{
+                        width: 88px;
+                        height: 88px;
+                        // 距离下面10px 
+                        margin: 0 auto 10px;
+                    }
+                }
+            }
+            .fixed-pop2{
+                height: 328px;
+                position: absolute;
+                left: -226px;
+                top: 140px;
+                display: none;
+                padding-right: 20px;
+                overflow: hidden;
+                .p-inner2{
+                    padding: 10px;
+                    border: 1px solid #dfdfdf;
+                    background: #fff;
+                    .img-xinr{
+                        background-image: url(../image/xinr.png);
+                        background-size: 100%;
+                        width: 190px;
+                        // 要写高度
+                        height: 152px;
+                        margin-bottom: 20px;
+                    }
+                    img{
+                        display: block;
+                        width: 88px;
+                        height: 88px;
+                        // 距离下面10px 
+                        margin: 0 auto 10px;
+                    }
+                }
+            }
+
+            .fixed-pop3{
+                width: 210px;
+                position: absolute;
+                left: -224px;
+                top: 210px;
+                display: none;
+                padding-right: 20px;
+                overflow: hidden;
+                .p-inner3{
+                    padding: 10px;
+                    border: 1px solid #dfdfdf;
+                    background: #fff;
+                    img{
+                        width: 120px;
+                        height: 120px;
+                        // 距离下面10px 
+                        margin: 0 auto 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+

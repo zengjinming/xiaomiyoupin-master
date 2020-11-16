@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 重置样式表 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- 引入图标样式表 -->
+    <link rel="stylesheet" href="./fa/css/all.css">
+    <link rel="stylesheet" href="./css/index1.css">
+    <title>悦享</title>
+
+    <script src="./js/tool.js"></script>
+    <script src="./js/jquery.min.js"></script>
+
+    <script>
+        // 先加载页面
+        window.onload = function () {
+
+            var d1 = document.getElementById("d1");
+            //1.创建异步对象
+            var xhr = new XMLHttpRequest();
+            //4.接收响应
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var r = xhr.responseText;
+                    var arr = JSON.parse(r);
+                    //结构字符串-------------------1
+                    // var strHTML;
+                    //结构字符串-------------------2
+                    for (var i = 0; i < arr.length; i++) {
+                        d1.innerHTML += `
+                            <div class="goodsbox" id="goodsbox" value="${arr[i].gid}">
+								<div class="goods1">
+									<div class="yagood">
+                                       <img src="${arr[i].gimg}" class="goodimg">
+									</div>
+									<p class="des">${arr[i].gdes}</p>
+                                 </div>
+								<div class="goods2">
+									 <div class="gdct">
+										<span class="yagdect">${arr[i].gdct}</span>
+									</div>
+									 <p class="gtitle">${arr[i].gname}</p>
+									 <p class="pro-price">
+										<span class="pro-unit">¥</span>
+										<span class="m-num">${arr[i].gprice}</span>		
+									</p>
+								</div> 
+							 </div>
+							`;
+
+                        // d1.innerHTML = strHTML;
+                    }
+                }
+            }
+            //2.创建请求
+            xhr.open("get", "/goods");
+            //3.发送请求
+            xhr.send();
+
+            var mzhong = document.getElementById("mzhong");
+            //1.创建异步对象
+            var xhr1 = new XMLHttpRequest();
+            //4.接收响应
+            xhr1.onreadystatechange = function () {
+                if (xhr1.readyState == 4 && xhr1.status == 200) {
+                    var r = xhr1.responseText;
+                    var arr = JSON.parse(r);
+                    //结构字符串-------------------1
+                    // var strHTML;
+                    //结构字符串-------------------2
+                    for (var i = 0; i < arr.length; i++) {
+                        mzhong.innerHTML += `
+                        <div class="miaobox" id="${arr[i].mid}">
+                        <div class="mgoods1">
+                                <div class="yamgood">
+                                   <img src="${arr[i].mimg}" class="mimg">
+                                </div>
+                        </div>
+                            <div class="mgoods2">
+                                 <p class="mtitle">${arr[i].mname}</p>
+                                 <p class="miaoprice">
+                                    <span class="m-unit">¥</span>
+                                    <span class="miao-num">${arr[i].mprice1}</span>		
+                                </p>
+                            </div>
+                        </div>
+
+							`;
+
+                        // d1.innerHTML = strHTML;
+                    }
+                }
+            }
+            //2.创建请求
+            xhr1.open("get", "/miaos");
+            //3.发送请求
+            xhr1.send();
+
+            var xinzhong = document.getElementById("xinzhong");
+            //1.创建异步对象
+            var xhr2 = new XMLHttpRequest();
+            //4.接收响应
+            xhr2.onreadystatechange = function () {
+                if (xhr2.readyState == 4 && xhr2.status == 200) {
+                    var r = xhr2.responseText;
+                    var arr = JSON.parse(r);
+                    //结构字符串-------------------1
+                    // var strHTML;
+                    //结构字符串-------------------2
+                    for (var i = 0; i < arr.length; i++) {
+                        xinzhong.innerHTML += `
+                        <div class="xinbox" id="${arr[i].xid}">
+                        <div class="xgoods1">
+                                <div class="yaxgood">
+                                   <img src="${arr[i].ximg}" class="mimg">
+                                </div>
+                        </div>
+                            <div class="xgoods2">
+                                 <p class="xtitle">${arr[i].xname}</p>
+                                 <p class="xdes">${arr[i].xdes}</p>
+                                 <p class="xinprice">
+                                    <span class="x-unit">¥</span>
+                                    <span class="xin-num">${arr[i].xprice1}</span>		
+                                </p>
+                            </div>
+                        </div>
+
+							`;
+
+                        // d1.innerHTML = strHTML;
+                    }
+                }
+            }
+            //2.创建请求
+            xhr2.open("get", "/xinps");
+            //3.发送请求
+            xhr2.send();
+
+            // 给商品添加点击事件
+            // 给goods商品添加点击事件
+            $(document).on('click', '#goodsbox', function () {
+                var diid = this.getAttribute("value");
+                alert("你是最棒的");
+                // alert(diid);
+                // 点击了该商品，查询该id，所以要向后台发出请求
+                var xhr3 = new XMLHttpRequest();
+                // 响应请求
+                xhr3.onreadystatechange = function () {
+                    if (xhr3.readyState == 4 && xhr2.status == 200) {
+                        var r = xhr3.responseText;
+                        var arr = JSON.parse(r);
+                        // alert(arr[diid-1].gid);
+                        //把商品的id存储在session里面，商品详情页面使用
+                        window.location.href = "http://localhost:8080/xiangqi1.html";
+                        localStorage.setItem("index", arr[diid - 1].gid);
+                    }
+                }
+                //2.创建请求
+                xhr3.open("get", "/goodsid");
+                //3.发送请求
+                xhr3.send();
+            })
+
+
+            // }
+
+
+            // 获取session里面的值，再把其添加到首页
+            var theme = localStorage.getItem("username1");
+            var themename = document.getElementById("themename");
+            themename.innerHTML = theme;
+
+            // 先做中间部分图片的轮播效果
+            var imglist = document.getElementById("imglist");
+            // 获取img
+            var imgArr = document.getElementById("imglist").getElementsByTagName("img");
+
+            // 先显示第一张图片
+            imgArr[0].style.display = "block";
+
+            // 获取小圆点
+            var aArr = document.getElementById("pointer").getElementsByTagName("a");
+
+            var prev = document.getElementById("prev");
+
+            var next = document.getElementById("next");
+            var index = 0;
+
+            var prevnext = document.getElementById("prevnext");
+
+            // 遍历小圆点
+            for (var i = 0; i < aArr.length; i++) {
+                // 保存其索引
+                aArr[i].num = i;
+                // 添加点击事件
+                aArr[i].onclick = function () {
+                    // 目前的索引
+                    index = this.num;
+                    // 淡出函数
+                    fadeOut(imgArr[index], 10);
+                    changeImg(index);
+                    fadeIn(imgArr[index], 10);
+                }
+            }
+
+            // 左边按钮点击事件
+            prev.onclick = function () {
+                // clearInterval(time);
+                // 往左边走
+                fadeOut(imgArr[index], 10);
+                // index自减
+                index--;
+                // 判断
+                if (index < 0) {
+                    index = imgArr.length - 1;
+                }
+                changeImg(index);
+                fadeIn(imgArr[index], 10);
+            }
+
+            // 右边按钮点击事件
+            next.onclick = function () {
+                // clearInterval(time);
+                // 往右边走，index自增
+                fadeOut(imgArr[index], 10);
+                index++;
+                if (index > imgArr.length - 1) {
+                    index = 0;
+                }
+                changeImg(index);
+                fadeIn(imgArr[index], 10);
+
+            }
+
+            // 先写淡出函数
+            function fadeOut(obj, speed) {
+                var opa = "100";
+                var timer = null;
+                timer = setInterval(function () {
+                    opa = opa - speed;
+                    if (opa < 0) {
+                        opa = 0;
+                        clearInterval(timer);
+                    }
+                    // obj.style.opacity=opa/100;
+                }, 100);
+
+            }
+
+            // 再写淡入函数
+            function fadeIn(obj, speed) {
+                // 先把其对象的
+                obj.style.display = "block";
+                var opa = 0;
+                var timer = null;
+                timer = setInterval(function () {
+                    opa = opa + speed;
+                    if (opa > 100) {
+                        opa = 100;
+                        clearInterval(timer);
+                    }
+                    // obj.style.opacity=opa/100;
+                }, 100);
+            }
+
+            // 再写自动切换图片函数
+            var time = 0;
+            function autoplay() {
+                time = setInterval(function () {
+                    // 调用淡出函数
+                    fadeOut(imgArr[index], 10);
+                    // 使index自增
+                    index++;
+                    // 判断是不是到了最后一张
+                    if (index > imgArr.length - 1) {
+                        // 倒完了最后一张，之后index会加一
+                        index = 0;
+                    }
+                    changeImg(index);
+                    fadeIn(imgArr[index], 10);
+                }, 2000)
+            }
+
+            autoplay();
+
+            // 鼠标移入的时候，会自动结束
+            imglist.onmouseover = function () {
+                // 关闭定时函数
+                clearInterval(time);
+            }
+
+            // 鼠标移出的时候，会自动切换
+            imglist.onmouseout = function () {
+                autoplay();
+            }
+
+            prevnext.onmouseover = function () {
+                clearInterval(time);
+            }
+
+            prevnext.onmouseout = function () {
+                autoplay();
+            }
+
+            // 改变图片
+            function changeImg(dd) {
+                // 
+                for (var j = 0; j < imgArr.length; j++) {
+                    // 设置其小圆点没有显示
+                    aArr[j].className = "";
+                    // 图片也是不显示
+                    imgArr[j].style.display = "none";
+                }
+                // 除了上面这些，选到的图片就会显示小圆点和图片
+                aArr[dd].className = "active";
+                imgArr[dd].style.display = "block";
+            }
+
+            var li = document.getElementById('fixnav').getElementsByTagName('li');
+            // 获取
+            // 当鼠标移入方块内时
+            for (let i = 0; i < li.length; i++) {
+                li[i].onmouseover = function () {
+                    // 如果该鼠标移入,则添加相应的类
+                    var a = this.children[0];
+                    var p = this.children[1];
+                    var divm = this.children[2];
+                    // 当鼠标移入时，直接切换类
+                    removeClass(a, 'm-icons' + i);
+                    addClass(a, "m-iconsa" + i);
+                    // 给字体添加相应的颜色
+                    p.style.color = "#845f3f";
+                    divm.style.display = 'block';
+
+                }
+                li[i].onmouseout = function () {
+                    // 如果该鼠标移入,则添加相应的类
+                    var a = this.children[0];
+                    var p = this.children[1];
+                    var divm = this.children[2];
+                    // 当鼠标移入时，直接切换类
+                    removeClass(a, 'm-iconsa' + i);
+                    addClass(a, "m-icons" + i);
+                    p.style.color = "#333";
+                    divm.style.display = "none";
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div class="home">
+        <!-- 头部导航栏如下 -->
+        <div class="m-top clearfix">
+            <!-- 导航栏里面的主要部分 -->
+            <div class="m-li-top">
+                <ul class="top-right">
+                    <li class="f1 m-login">
+                        <a href="./user.html" class="loginyya" id="loginyya">
+                            <span class="f1img"></span>
+                            <span id="themename"></span>
+                            <span class="fa fa-chevron-down"></span>
+
+                        </a>
+                        <div class="site-item-nav">
+                            <ul class="site-nav user-nav">
+                                <li>
+                                    <a rel="nofollow" href="#" class="m-safe-anchor">我的订单</a>
+                                </li>
+                                <li>
+                                    <a rel="nofollow" href="#" class="m-safe-anchor">退款/售后</a>
+                                </li>
+                                <li>
+                                    <a rel="nofollow" href="#" class="m-safe-anchor">我的资产</a>
+                                </li>
+                                <li>
+                                    <a rel="nofollow" href="#" class="m-safe-anchor">我的收藏</a>
+                                </li>
+                                <li>
+                                    <a rel="nofollow" href="#" class="m-safe-anchor">地址管理</a>
+                                </li>
+                                <li>
+                                    <a rel="nofollow" href="javascript:;">退出登录</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <span class="f1 m-line"></span>
+                    <li class="f1 m-help">
+                        <a href="#">帮助中心</a>
+                    </li>
+                    <span class="f1 m-line"></span>
+                    <li class="f1 downlode">
+                        <i class="fa fa-tablet-alt fa-lg"></i>
+                        <a href="#">下载App</a>
+                    </li>
+                    <span class="f1 m-line"></span>
+                    <li class="f1 guize">
+                        <div class="m-curou">
+                            <a href="#">
+                                资质证照&nbsp;/&nbsp;协议规则
+                            </a>
+                            <i class="fa fa-angle-down fa-lg"></i>
+                        </div>
+                        <div class="site-item-nav hidden">
+                            <ul class="list">
+                                <li>
+                                    <a href="#">资质证照</a>
+                                </li>
+                                <li>
+                                    <a href="#">协议规则</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mheader clearfix" id="mheader">
+            <div class="mcontainer" id="mcontainer">
+                <div class="yue">悦享购物</div>
+                <div class="feilei">
+
+                </div>
+                <ul class="tap-list">
+                    <li>
+                        <a href="#">限时抢购</a>
+                    </li>
+                    <li>
+                        <a href="#">企业采购</a>
+                    </li>
+                </ul>
+                <div class="m-shop">
+                    <div class="m-shop-main">
+                        <a href="#"></a>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="m-search">
+                    <div class="search-from">
+                        <a href="#"></a>
+                        <div class="search-input">
+                            <input type="text" placeholder="搜索">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="zhong">
+            <div class="zhong-container clearfix">
+                <ul class="left">
+                    <li>
+                        <a href="#">有品推荐&nbsp;/&nbsp;家电推荐</a>
+                    </li>
+                    <li>
+                        <a href="#">居家餐厨&nbsp;/&nbsp;电视影音</a>
+                    </li>
+                    <li>
+                        <a href="#">家具家装&nbsp;/&nbsp;智能家庭</a>
+                    </li>
+                    <li>
+                        <a href="#">日用文创&nbsp;/&nbsp;服装配饰</a>
+
+                    </li>
+                    <li>
+                        <a href="#">鞋靴箱包&nbsp;/&nbsp;美妆个护</a>
+                    </li>
+                    <li>
+                        <a href="#">运动户外&nbsp;/&nbsp;出行车品</a>
+                    </li>
+                    <li>
+                        <a href="#">美食酒饮&nbsp;/&nbsp;母婴亲子</a>
+                    </li>
+                    <li>
+                        <a href="#">健康保健&nbsp;/&nbsp;宠物生活</a>
+                    </li>
+                    <li>
+                        <a href="#">有品海购&nbsp;/&nbsp;DLAB</a>
+                    </li>
+                    <li>
+                        <a href="#">日用文创&nbsp;/&nbsp;服装配饰</a>
+
+                    </li>
+                </ul>
+                <div class="outer">
+                    <ul class="imglist" id="imglist">
+                        <li>
+                            <a href="#">
+                                <img src="./image/1.jpeg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./image/2.jpeg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./image/3.jpeg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./image/4.jpeg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./image/5.jpeg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="./image/6.jpeg" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="pointer" id="pointer">
+                    <a class="active" href="javascript:;"></a>
+                    <a href="javascript:;"></a>
+                    <a href="javascript:;"></a>
+                    <a href="javascript:;"></a>
+                    <a href="javascript:;"></a>
+                    <a href="javascript:;"></a>
+                </div>
+
+                <div class="prevnext" id="prevnext">
+                    <a class="prev" id="prev" href="javascript:;"></a>
+                    <a class="next" id="next" href="javascript:;"></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="p-wrap">
+            <div class="p-wrap-container">
+                <ul class="p-nav">
+                    <li class="m-tag">
+                        <img src="./image/1.png" alt="">
+                        <a href="#">每日新品</a>
+                    </li>
+                    <li class="m-tag">
+                        <img src="./image/2.png" alt="">
+                        <a href="#">小米众筹</a>
+                    </li>
+                    <li class="m-tag">
+                        <img src="./image/3.png" alt="">
+                        <a href="#">有品秒杀</a>
+                    </li>
+                    <li class="m-tag">
+                        <img src="./image/4.png" alt="">
+                        <a href="#">热销榜单</a>
+                    </li>
+                    <li class="m-tag-no">
+                        <img src="./image/5.png" alt="">
+                        <a href="#">小米自营</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="xiatu">
+            <div class="container clearfix">
+                <!-- 上面导航部分 -->
+                <div class="h-top">
+                    <h2 class="h-font">
+                        小米有品众筹
+                        <span>永远好奇 永远年轻</span>
+                    </h2>
+
+                    <span class="h-more">
+                        <a href="#">更多</a>
+                        <i class="fa fa-angle-right"></i>
+                    </span>
+                </div>
+                <!-- 下面各个方块内容 -->
+                <div class="h-main">
+                    <!-- 第一个小方块 -->
+                    <div class="h-good-items">
+                        <img src="./image/xiao3.png" alt="">
+                        <div class="p-text">
+                            <p class="p-info">智能感应消毒卫士</p>
+                            <p class="p-desr">人体红外感应,杀菌照明二合一,...</p>
+                            <p class="p-price">￥ 99</p>
+                        </div>
+                    </div>
+
+                    <div class="h-good-items1">
+                        <div class="p-text1">
+                            <p class="p-info1">超智能鞋垫</p>
+                            <p class="p-price1">￥ 210</p>
+                        </div>
+                        <img src="./image/xiao1.png" alt="">
+                    </div>
+
+                    <div class="h-good-items2">
+                        <div class="p-text2">
+                            <p class="p-info2">智能按摩头盔</p>
+                            <p class="p-price2">￥ 599</p>
+                        </div>
+                        <img src="./image/xiao2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="miaosha">
+            <div class="container clearfix">
+                <div class="miaotop">
+                    <h2 class="miao-font">
+                        有品秒杀
+                    </h2>
+                    <span class="miao-more">
+                        <a href="#">更多</a>
+                        <i class="fa fa-angle-right"></i>
+                    </span>
+                </div>
+                <div class="mzhong" id="mzhong">
+                    <div class="yuanjian1" id="yuanjian1">
+
+                    </div>
+                    <div class="yuanjian2" id="yuanjian2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="xinpin">
+            <div class="container clearfix">
+                <div class="xintop">
+                    <h2 class="xin-font">
+                        每日新品
+                        <span>每天10点 惊喜不断</span>
+                    </h2>
+                    <span class="miao-more">
+                        <a href="#">更多</a>
+                        <i class="fa fa-angle-right"></i>
+                    </span>
+                </div>
+                <div class="xinzhong" id="xinzhong">
+                    <div class="yuanjian3" id="yuanjian3">
+
+                    </div>
+                    <div class="yuanjian4" id="yuanjian4"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shangp">
+            <div class="container clearfix">
+                <div class="shangtop">
+                    <h2 class="shang-font">
+                        专属推荐
+                        <!-- <span>每天10点 惊喜不断</span> -->
+                    </h2>
+                </div>
+                <div id="d1"></div>
+            </div>
+
+        </div>
+
+        <!-- 右边的部分固定 -->
+        <div class="fixedbox">
+            <ul class="fixnav" id="fixnav">
+                <li>
+                    <a class="m-icons0" data-src="" href="javascript:;"></a>
+                    <p class="text">联系客服</p>
+                    <div class="fixed-pop0">
+                        <div class="p-inner">
+                            <p class="info-title">小米有品平台问题，建议反馈，商户和物流问题投诉等请拨打 小米有品客服热线</p>
+                            <p class="info-phone">400-100-1199</p>
+                            <p class="info-day">(周一至周日 8：00-18：00)</p>
+                            <p class="info-des">小米/米家自营品牌，手机电视智能硬件商品或订单发货/退款售后问题 请拨打小米自营客服热线</p>
+                            <p class="info-phone">400-100-5678</p>
+                            <p class="info-day">(周一至周日 8：00-18：00)</p>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="m-icons1" data-src="" href="javascript:;"></a>
+                    <p class="text">下载APP</p>
+                    <div class="fixed-pop1">
+                        <div class="p-inner1">
+                            <img src="./image/youp.png" alt="">
+                            <p class="info-title1">下载小米有品app <br> 得新人礼包</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="m-icons2" data-src="" href="javascript:;"></a>
+                    <p class="text">新人有礼</p>
+                    <div class="fixed-pop2">
+                        <div class="p-inner2">
+                            <div class="img-xinr"></div>
+                            <img src="./image/youp.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="m-icons3" data-src="" href="javascript:;"></a>
+                    <p class="text">关注微信</p>
+                    <div class="fixed-pop3">
+                        <div class="p-inner3">
+                            <img src="./image/youp.png" alt="">
+                            <p class="info-title3">扫码关注「小米有品」微信服务号，签到积分赢大奖</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a class="m-icons4" data-src="" href="javascript:;"></a>
+                    <p class="text">回到顶部</p>
+                    <div class="fixed-pop4">
+                        <!-- <div class="p-inner">
+                            <p class="info-title">小米有品平台问题，建议反馈，商户和物流问题投诉等请拨打 小米有品客服热线</p>
+                            <p class="info-phone">400-100-1199</p>
+                            <p class="info-day">(周一至周日 8：00-18：00)</p>
+                            <p class="info-des">小米/米家自营品牌，手机电视智能硬件商品或订单发货/退款售后问题 请拨打小米自营客服热线</p>
+                            <p class="info-phone">400-100-5678</p>
+                            <p class="info-day">(周一至周日 8：00-18：00)</p>
+                            
+                        </div> -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

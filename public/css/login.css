@@ -1,0 +1,98 @@
+body {
+    /* height: 100%; */
+    /* background: #fff url(../image/2028003.jpg) 40% 40% no-repeat; */
+    /* background-size: cover; */
+    background-image: url(../image/2028003.jpg);
+    /* 背景图片是否重复  不重复 */
+    background-repeat: no-repeat;
+    /* 背景图片的尺寸自动调整 */
+    background-size: 100% auto;
+}
+
+#login-box {
+    /* 
+        外面的大盒子
+     */
+    width: 30%;
+    height: auto;
+    /* 使这个处于中间 */
+    margin: 0 auto;
+    /* 距离顶部百分之15的距离 */
+    margin-top: 12%;
+    text-align: center;
+    background: #00000060;
+    padding: 20px 50px;
+    /* border: solid 1px #00000060; */
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#login-box h1 {
+    color: #fff;
+}
+
+#login-box .form .item input {
+    margin-top: 2px;
+    /* 去除外面的蓝色方块 */
+    outline: none;
+}
+
+#login-box .form i {
+    font-size: 18px;
+    color: #fff;
+}
+
+#login-box .form .item input {
+    width: 220px;
+    font-size: 18px;
+    /* 其他的边框去除，保留一个底部边框 */
+    border: 0;
+    border-bottom: 2px solid#fff;
+    padding: 5px 10px;
+    background: #ffffff00;
+    color: #fff;
+}
+
+#login-box .form .item div{
+    margin-left: 110px;
+    width: 160px;
+    /* display: none; */
+    color: #f30909;
+    height: 33px;
+    line-height: 33px;
+    /*设置元素不可看，但是还占有位置 */
+    visibility: hidden;
+    text-align:left;
+}
+
+#login-box #loginBtn {
+    margin-top: 15px;
+    width: 190px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(to right, #f30909 0%, #4013e6e1 100%);
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+}
+
+.reg-bar{
+    margin-top: 30px;
+}
+
+.reg-bar .reg {
+    float: left;
+    margin-left: 30px;
+}
+
+.reg-bar .forget {
+    float: right;
+    margin-right: 30px;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}

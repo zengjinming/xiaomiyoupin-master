@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="./css/login.css">
+    <!-- font-awesome 图标字体 http://www.fontawesome.com.cn/faicons/#web-application -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="screen"
+        rel="stylesheet" type="text/css">
+    <title>悦享</title>
+
+    <script src="./js/ajax.js"></script>
+    <script src="./js/template-web.js"></script>
+
+    <!-- 用户名模块 -->
+    <!-- <script type='text/html' id="unameTpl">
+            <div class="list-group-item">{{result}}</div>
+     </script> -->
+</head>
+
+<body>
+    <div id="login-box">
+        <h1>注册</h1>
+        <form class="form" id="form">
+            <div class="item">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                <input type="text" id="username" name="username" placeholder="Username" autocomplete="off">
+                <div class="list-group" id="list-box">登录成功</div>
+            </div>
+            <div class="item">
+                <i class="fa fa-key" aria-hidden="true"></i>
+                <input type="password" name="password" id="password" placeholder="Password">
+                <div class="list-group" id="list-box1">登录成功</div>
+            </div>
+            <input type="button" class="btn btn-default" value="register" id="loginBtn">
+            <!-- <button id='loginBtn'>Login</button> -->
+        </form>
+        <div class="reg-bar">
+            <a class="reg" href="./login.html" target="_blank">立即登录</a>
+            <a class="forget" href="#" target="_blank">忘记密码</a>
+        </div>
+
+    </div>
+
+    <script>
+        // 获取登录按钮
+        var loginBtn = document.getElementById('loginBtn');
+        // 获取登录表单
+        var form = document.getElementById('form');
+        var password = document.getElementById('password');
+        var username = document.getElementById('username');
+
+        // 获取提示文字的存放容器
+        var listBox = document.getElementById('list-box');
+        var listBox1 = document.getElementById('list-box1');
+        var item = document.getElementById('item');
+        // 失去焦点之后的事件
+        username.onblur = function () {
+            // 不能在外面赋值之后用
+            if (username.value == '') {
+                listBox.style.visibility = 'visible';
+                listBox.innerHTML = '请输入用户名';
+            } else if (username.value != '') {
+                listBox.style.visibility = 'hidden';
+            }
+        }
+        password.onblur = function () {
+            if (this.value == '') {
+                listBox1.style.visibility = 'visible';
+                listBox1.innerHTML = '请输入密码';
+            } else if (this.value != "") {
+                listBox1.style.visibility = 'hidden';
+            }
+        }
+        // 为登录按钮添加点击事件
+        loginBtn.onclick = function () {
+            // 将html表单转换为formData表单对象
+            var formData = new FormData(form);
+            // 创建ajax对象
+            var xhr = new XMLHttpRequest();
+            // 对ajax对象进行配置
+            xhr.open('post', 'http://localhost:8080/register');
+            // 发送请求并传递请求参数
+            xhr.send(formData);
+            // 监听服务器端给予的响应内容
+            xhr.onload = function (result) {
+                if (xhr.responseText == "注册成功") {
+                    alert("注册成功");
+                    window.location.href="http://localhost:8080/login.html";
+                }else if(xhr.responseText=="该用户存在"){
+                    listBox.style.visibility = 'visible';
+                    listBox.innerHTML = '该用户名已存在';
+                    listBox1.style.visibility = 'visible';
+                    listBox1.innerHTML = '请输入密码';
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>
